@@ -1,10 +1,84 @@
+{% load bootstrap4 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Adega</title>
+    {% bootstrap_css %}
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
 <body>
-    <h1>adega.html....</h1>
+    <div class="container">
+        <h1>adega.html....</h1>
+        <hr>
+    </div>
+    {% for vinho in vinhos %}
+    <div class="container">
+        <fieldset class="form-group">
+            <legend>Vinho</legend>
+                <label>Nome  : </label>
+                <input type="text" value="{{ vinho.nome }}"><br>
+                <label>Cor: </label>
+                <input type="text" value="{{ vinho.get_cor_display }}"><br>
+                <label>Uva: </label>
+                <input type="text" value="{{ vinho.get_uva_display }}"><br>
+                <label>Açucar: </label>
+                <input type="text" value="{{ vinho.get_acucar_display }}"><br>
+        </fieldset><br>
+        <fieldset>
+            <legend>Origem</legend>
+                <label>Vinícula: </label>
+                <input type="text" value="{{ vinho.vinicula }}"><br>
+                <label>Safra: </label>
+                <input type="number" value="{{ vinho.safra }}"><br>
+                <label>Nacionalidade: </label>
+                <input type="text" value="{{ vinho.get_nacionalidade_display }}"><br>
+                <label>Reserva: </label>
+                <input type="text" value="{{ vinho.get_reserva_display }}"><br>
+        </fieldset><br>
+        <fieldset>
+            <legend>Informações</legend>
+                <label>Álcool: </label>
+                <input type="text" value="{{ vinho.alcool }}"><br>
+                <label>Volume: </label>
+                <input type="text" value="{{ vinho.volume }}"><br>
+        </fieldset><br>
+        <fieldset>
+            <legend>Comercial</legend>
+                <label>Preço: </label>
+                <input type="text" value="{{ vinho.preco }}"><br>
+                <label>Promoção: </label>
+                <input type="text" value="{{ vinho.promocao }}"><br>
+                <label>Estoque: </label>
+                <input type="number" value="{{ vinho.estoque }}"><br>
+                <label>Avaliação: </label>
+                <input type="number" value="{{ vinho.avaliacao }}"><br>
+                <label>Número de avaliações: </label>
+                <input type="number" value="{{ vinho.num_avaliacoes }}"><br>
+        </fieldset><br>
+        <fieldset>
+            <legend>Imagens</legend>
+                <label>Imagem da tonalidade: </label><br>
+                <img src="{{ vinho.tonalidade.thumb.url }}" ><br>
+                <label>Imagem da rótulo: </label><br>
+                <img src="{{ vinho.img_rotulo.thumb.url }}" ><br>
+                <label>Imagem da garrafa: </label><br>
+                <img src="{{ vinho.img_garrafa.thumb.url }}" ><br>
+        </fieldset><br>
+        <fieldset>
+            <legend>Descrição</legend>
+                <label>Descrição: </label>
+                <input type="text" value="{{ vinho.descricao }}"><br>
+                <label>Destaque: </label>
+                <input type="text" value="{{ vinho.destaque }}"><br>
+                <label>Ativo: </label>
+                 <input type="text" value="{{ vinho.ativo }}"><br>
+        </fieldset><br>
+        <hr>
+    </div>
+    {% endfor%}
+
+{% bootstrap_javascript jquery='full' %}
 </body>
 </html>
