@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-
-
 def index(request):
     return render(request,'index.html')
 
@@ -12,3 +10,4 @@ def adega(request):
 
 def adicionarVinho(request):
     return render(request,'adicionarVinho.html')
+
